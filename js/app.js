@@ -1,11 +1,9 @@
 
-
 // Enemies our player must avoid
 var Enemy = function() {
+// Variables applied to each of our instances go here
     this.x = x;
     this.y = y;
-    // Variables applied to each of our instances go here,
-
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
@@ -46,23 +44,29 @@ Player.prototype.update = function() {
     
 
 /*render function says, redraw everything and by the process of the 
-*x property being different, your player will show up in a 
-*/different place
+*x property being different, your player will show up in a different place
+*/
 
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
-
-Player.prototype.handleInput = function() {
     /*Anytime you press a key, you need to call a handle input method
     *that is going to increment our x and y values for your player!
     *Left is going to move the player along the y axis
-    *Up and down move the player along the Y axis.
-    *Handle input needs to list to your keyboard strokes 
+    *Up and down move the player along the Y axis. Handle input needs to list keyboard strokes
+    *Handle input needs to list your keyboard strokes
+    */
+
+
+Player.prototype.handleInput = function() {
+
 };
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
+allEnemies = array();
+
+
 // Place the player object in a variable called player
 
 //Create 1 instance of the player:
@@ -70,7 +74,6 @@ Player.prototype.handleInput = function() {
 
 //Instantiate my objects, create one instance of my Player. 
 //Create an array with allEnemies, they should show up over and over again!
-
 
 
 // This listens for key presses and sends the keys to your
