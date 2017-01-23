@@ -1,3 +1,12 @@
+
+//Here is our player
+var Player = function() {
+    this.sprite = 'images/char-boy.png';
+//here we need an x, y position of where my player is at
+
+};
+ 
+
 // Enemies our player must avoid
 var Enemy = function() {
     // Variables applied to each of our instances go here,
