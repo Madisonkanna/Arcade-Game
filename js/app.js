@@ -1,11 +1,4 @@
 
-//Here is our player
-var Player = function() {
-    this.sprite = 'images/char-boy.png';
-//here we need an x, y position of where my player is at
-
-};
- 
 
 // Enemies our player must avoid
 var Enemy = function() {
@@ -34,6 +27,15 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 
+//Here is our player class
+var Player = function() {
+    this.x = x;
+    this.y = y;
+    this.sprite = 'images/char-boy.png';
+//here we need an x, y position of where my player is at
+
+};
+ 
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
