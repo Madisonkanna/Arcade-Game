@@ -39,6 +39,7 @@ var Engine = (function(global) {
          * would be the same for everyone (regardless of how fast their
          * computer is) - hurray time!
          */
+         //The DT variable helps keep the same pace for these animations. Some 'tics' go faster on some computers. Anytime you have smoot animation you want to multiply that animation against the difference of the time that the last tic ran and the current tic. This is what creates the smooth animation for your bugs. This is defined as the DT variable.
         var now = Date.now(),
             dt = (now - lastTime) / 1000.0;
 
