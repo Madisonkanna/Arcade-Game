@@ -2,6 +2,8 @@
 
 // Enemies our player must avoid
 var Enemy = function() {
+    this.x = x;
+    this.y = y;
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
@@ -44,8 +46,7 @@ Player.prototype.render = function() {
 //render function says, redraw everything and by the process of the x property being different, your player will show up in a different place
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-
-}
+};
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
