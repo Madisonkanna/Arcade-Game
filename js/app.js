@@ -5,7 +5,6 @@ var Enemy = function() {
     this.x = x;
     this.y = y;
     // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
@@ -31,19 +30,25 @@ Enemy.prototype.render = function() {
 
 //Here is our player class
 var Player = function() {
+//here we need an x, y position of where my player is at
     this.x = x;
     this.y = y;
     this.sprite = 'images/char-boy.png';
-//here we need an x, y position of where my player is at
+
 };
 
-//Draw the player on the screen
-Player.prototype.render = function() {
+/*Draw the player on the screen
+*Add in an additional function to the player class
+*called checkCollisions which resets the game when a player and a bug collide
+*/
+Player.prototype.update = function() {
     //If the upkey is pressed, we need to decrease x. The update function updates this property
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
+    
 
-//render function says, redraw everything and by the process of the x property being different, your player will show up in a different place
+/*render function says, redraw everything and by the process of the 
+*x property being different, your player will show up in a 
+*/different place
+
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
@@ -51,8 +56,13 @@ Player.prototype.render = function() {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
+
+//Create 1 instance of the player:
+
+
 //Instantiate my objects, create one instance of my Player. 
 //Create an array with allEnemies, they should show up over and over again!
+
 
 
 // This listens for key presses and sends the keys to your
