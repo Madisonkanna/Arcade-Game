@@ -1,20 +1,21 @@
 
 // Enemies our player must avoid
-var Enemy = function(x, y, speed) {
+var Enemy = function(x, y, sprite) {
 // Variables applied to each of our instances go here
+// The image/sprite for our enemies, this uses
+// a helper we've provided to easily load images
     this.x = x;
     this.y = y;
-    this.speed = 100;
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
+    this.speed = Speed(65, 250);
     this.sprite = 'images/enemy-bug.png';
 };
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
-
+    this.x = this.y += this.speed * dt;
         }
+
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
@@ -56,10 +57,19 @@ Player.prototype.render = function() {
 };
     /*Anytime you press a key, you need to call a handle input method
     *that is going to increment our x and y values for your player!
+    
+
+
+
     *Left is going to move the player along the y axis
     *Up and down move the player along the Y axis. Handle input needs to list keyboard strokes
     *Handle input needs to list your keyboard strokes
     */
+
+Player.prototype.handleInput = function(direction) {
+    if (direction === 'left' && this.x !== borders.left) {
+        this.x -= 101;
+    }
 
 Player.prototype.handleInput = function() {
 
@@ -80,6 +90,9 @@ var Player = new Player(0, 430);
 
 //Instantiate my objects, create one instance of my Player. 
 //Create an array with allEnemies, they should show up over and over again!
+var Speed = function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1));
+};
 
 
 // This listens for key presses and sends the keys to your
