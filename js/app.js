@@ -37,13 +37,21 @@ var Player = function() {
 
 //Draw the player on the screen
 Player.prototype.render = function() {
+    //If the upkey is pressed, we need to decrease x. The update function updates this property
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
+
+//render function says, redraw everything and by the process of the x property being different, your player will show up in a different place
+Player.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+
+}
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-
+//Instantiate my objects, create one instance of my Player. 
+//Create an array with allEnemies, they should show up over and over again!
 
 
 // This listens for key presses and sends the keys to your
