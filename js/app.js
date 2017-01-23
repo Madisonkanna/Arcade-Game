@@ -53,6 +53,14 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+Player.prototype.handleInput = function() {
+    /*Anytime you press a key, you need to call a handle input method
+    *that is going to increment our x and y values for your player!
+    *Left is going to move the player along the y axis
+    *Up and down move the player along the Y axis.
+    *Handle input needs to list to your keyboard strokes 
+};
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
