@@ -31,7 +31,7 @@ Enemy.prototype.update = function(dt) {
 
         //remove enemies from array when they're gone
         var enemiesIndex = allEnemies.indexOf(this);
-        allEnemies.splice(index, 1);
+        allEnemies.splice(enemiesIndex, 1);
     }
     
 };
@@ -124,6 +124,7 @@ var allEnemies = [];
 for (var i = 0; i < 4; i++) {
     allEnemies.push(new Enemy());
 }
+
 // Place the player object in a variable called player
 
 //Create 1 instance of the player:
