@@ -5,3 +5,14 @@ Enemy.prototype.move = function(dt) {
       this.x = this.x + (dt * this.speed);
   }
 };
+
+
+
+var Speed = function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1));
+};
+
+
+
+enemy protoype 
+    this.x = this.y + this.speed * dt;

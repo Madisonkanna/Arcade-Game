@@ -18,17 +18,19 @@ var Enemy = function(x, y) {
 // Parameter: dt, a time delta between ticks
 
 Enemy.prototype.update = function(dt) {
-    this.x = this.y + this.speed * dt;
-}
+    this.x = this.x + (dt * this.speed);
+    //this will update the position of our enemy, based on
+    //where our enemy went!
+
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
 };
 
-
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    //this will put the enemy onscreen in its new place
 };
 
 // Now write your own player class
@@ -50,11 +52,11 @@ var Player = function(x, y) {
 *called checkCollisions which resets the game when a player and a bug collide
 */
 Player.prototype.update = function() {
-    this.x = this.y + this.speed * dt;
+    this.x = this.y + (dt * this.speed);
+
 }
 
     //If the upkey is pressed, we need to decrease x. The update function updates this property
-    
 /*render function says, redraw everything and by the process of the 
 *x property being different, your player will show up in a different place
 */
@@ -70,26 +72,25 @@ Player.prototype.render = function() {
     *Handle input needs to list your keyboard strokes
     */
 
-Player.prototype.handleInput = function() {
+Player.prototype.handleInput = function(allowedKeys) {
+    //what key you press will increment your values! So how do we do this?
 
 };
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-
-function allEnemies(enemy) {
     var allEnemies = [];
     var e1 = new Enemy(50, 50);
     var e2 = new Enemy(50, 50);
     for (var i; i < 4; i++) {
         allEnemies.push(new Enemy());
-    }
+
 };
 
 // Place the player object in a variable called player
 
 //Create 1 instance of the player:
-var Player = new Player(0, 430);
+var player = new Player(0, 430);
 
 //Instantiate my objects, create one instance of my Player. 
 //Create an array with allEnemies, they should show up over and over again!
@@ -110,5 +111,4 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
-
 
