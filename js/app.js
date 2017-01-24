@@ -1,8 +1,4 @@
 
-var Speed = function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1));
-};
-
 // Enemies our player must avoid
 var Enemy = function(x, y) {
 // Variables applied to each of our instances go here
@@ -18,7 +14,7 @@ var Enemy = function(x, y) {
 // Parameter: dt, a time delta between ticks
 
 Enemy.prototype.update = function(dt) {
-    this.x = this.x + (dt * this.speed);
+    this.x += this.speed * dt;
     //this will update the position of our enemy, based on
     //where our enemy went!
 
@@ -51,7 +47,7 @@ var Player = function(x, y) {
 *Add in an additional function to the player class
 *called checkCollisions which resets the game when a player and a bug collide
 */
-Player.prototype.update = function() {
+Player.prototype.update = function(dt) {
     this.x = this.y + (dt * this.speed);
 
 }
@@ -72,25 +68,20 @@ Player.prototype.render = function() {
     *Handle input needs to list your keyboard strokes
     */
 
-Player.prototype.handleInput = function(allowedKeys) {
-    //what key you press will increment your values! So how do we do this?
-
-};
+Player.prototype.handleInput = function(key) {
+    // do stuff with keys here 
+}
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-    var allEnemies = [];
-    var e1 = new Enemy(50, 50);
-    var e2 = new Enemy(50, 50);
-    for (var i; i < 4; i++) {
-        allEnemies.push(new Enemy());
-
-};
-
+var allEnemies = [];
+for (var i = 0; i < 1; i++) {
+    allEnemies.push(new Enemy());
+}
 // Place the player object in a variable called player
 
 //Create 1 instance of the player:
-var player = new Player(0, 430);
+var player = new Player(200, 430);
 
 //Instantiate my objects, create one instance of my Player. 
 //Create an array with allEnemies, they should show up over and over again!
