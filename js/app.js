@@ -14,7 +14,7 @@ var Enemy = function(x, y) {
 // Parameter: dt, a time delta between ticks
 
 Enemy.prototype.update = function(dt) {
-    this.x += this.speed * dt;
+    this.x = this.y + (dt * this.speed);
     //this will update the position of our enemy, based on
     //where our enemy went!
 
@@ -68,9 +68,26 @@ Player.prototype.render = function() {
     *Handle input needs to list your keyboard strokes
     */
 
-Player.prototype.handleInput = function(key) {
-    // do stuff with keys here 
-}
+Player.prototype.handleInput = function(key) {85
+    switch (key) {
+        case 'left':
+            this.x -= 100;
+            break;
+        case 'up':
+            this.y -= 85;
+        case 'right':
+            this.x -= 100;
+            break 
+        case 'down':
+            this.y += 85;
+            break;
+        default:
+            console.log('Please press arrow keys to move!');
+
+    }
+};
+
+
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
