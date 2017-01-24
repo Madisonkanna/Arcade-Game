@@ -13,7 +13,7 @@ var Enemy = function(x, y, sprite) {
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
-    this.x = this.y += this.speed * dt;
+    this.x = this.y + this.speed * dt;
         }
 
     // You should multiply any movement by the dt parameter
@@ -31,7 +31,7 @@ Enemy.prototype.render = function() {
 // a handleInput() method.
 
 //Here is our player class
-var Player = function() {
+var Player = function(x, y, sprite) {
 //here we need an x, y position of where my player is at
     this.x = x;
     this.y = y;
@@ -57,19 +57,12 @@ Player.prototype.render = function() {
 };
     /*Anytime you press a key, you need to call a handle input method
     *that is going to increment our x and y values for your player!
-    
 
-
-
-    *Left is going to move the player along the y axis
+    *Left is going to move the player along the x axis
     *Up and down move the player along the Y axis. Handle input needs to list keyboard strokes
     *Handle input needs to list your keyboard strokes
     */
 
-Player.prototype.handleInput = function(direction) {
-    if (direction === 'left' && this.x !== borders.left) {
-        this.x -= 101;
-    }
 
 Player.prototype.handleInput = function() {
 
@@ -80,8 +73,9 @@ Player.prototype.handleInput = function() {
 
 function allEnemies(enemy) {
     var allEnemies = [];
+    var enemy = new Enemy(50, 50);
 
-}
+};
 
 // Place the player object in a variable called player
 
