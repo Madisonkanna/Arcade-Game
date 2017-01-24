@@ -5,15 +5,16 @@ var Character = function(img, x, y) {
     this.x = x;
     this.y = y;
     this.sprite = img;
-}
+};
 
 // This is our enemies class
 var Enemy = function() {
-    Character.call(this, 'images/enemy-bug.png', -120, 60);
+    Character.call(this, 'images/enemy-bug.png', -100, 100);
     this.sprite = 'images/enemy-bug.png';
     this.speed = 100;
 };
 
+ 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 
@@ -36,12 +37,17 @@ Enemy.prototype.render = function() {
 // a handleInput() method.
 
 //Here is our player class
-var Player = function(x, y) {
+var Player = function() {
 //here we need an x, y position of where my player is at
-    this.x = x;
-    this.y = y;
-    this.speed = 100;
+    Character.call(this, 'images/char-boy.png', 200, 400);
     this.sprite = 'images/char-boy.png';
+};
+
+Player.prototype = Object.create(Character.prototype);
+Player.prototype.constructor = Player;
+
+Player.prototype.update = function(dt) {
+    this.x += this.speed * dt;
 
 };
 
@@ -73,21 +79,32 @@ Player.prototype.render = function() {
 Player.prototype.handleInput = function(key) {
     switch (key) {
         case 'left':
-            this.x -= 70; 
+            this.x -= 90;
+            if (this.x > 0) {
+                this.x -= 90;
+            } 
             break;
         case 'up':
-            this.y -= 70; 
+            this.y -= 80; 
+            if (this.y > -25) {
+                this.y -= 80;
+            }
         case 'right':
-            this.x -= 70;
+            this.x -= 100;
+            if (this.x < 400) {
+                this.x += 100;
+            }
             break 
         case 'down':
-            this.y += 100;
+            this.y += 85;
+            if (this.y < 390) {
+                this.y += 85;
+            }
             break;
         default:
             console.log('Please press arrow keys to move');
     }
 };
-
 
 
 // Now instantiate your objects.
@@ -99,7 +116,7 @@ for (var i = 0; i < 1; i++) {
 // Place the player object in a variable called player
 
 //Create 1 instance of the player:
-var player = new Player(200, 430);
+var player = new Player();
 
 //Instantiate my objects, create one instance of my Player. 
 //Create an array with allEnemies, they should show up over and over again!
