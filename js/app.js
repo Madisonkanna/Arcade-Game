@@ -12,9 +12,10 @@ var Enemy = function(x, y) {
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
+
 Enemy.prototype.update = function(dt) {
     this.x = this.y + this.speed * dt;
-        }
+}
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
@@ -45,10 +46,11 @@ var Player = function(x, y) {
 *called checkCollisions which resets the game when a player and a bug collide
 */
 Player.prototype.update = function() {
+    this.x = this.y + this.speed * dt;
+}
 
     //If the upkey is pressed, we need to decrease x. The update function updates this property
     
-
 /*render function says, redraw everything and by the process of the 
 *x property being different, your player will show up in a different place
 */
@@ -80,7 +82,6 @@ function allEnemies(enemy) {
     }
 
 };
-
 
 // Place the player object in a variable called player
 
