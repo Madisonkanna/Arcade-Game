@@ -25,12 +25,23 @@ Enemy.prototype.update = function(dt) {
     this.x += this.speed * dt;
     //this will update the position of our enemy, based on
     //where our enemy went!
+    //Instantiate a new enemy when another enmy goes offscreen
+    if (this.x >= 510) {
+        allEnemies.push(new Enemy());
+
+        //remove enemies from array when they're gone
+        var enemiesIndex = allEnemies.indexOf(this);
+        allEnemies.splice(index, 1);
+    }
+    
 };
 
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 // Draw the enemy on the screen, required method for game
+
+//HERE!
 
 // Now write your own player class
 // This class requires an update(), render() and
@@ -110,7 +121,7 @@ Player.prototype.handleInput = function(key) {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 var allEnemies = [];
-for (var i = 0; i < 1; i++) {
+for (var i = 0; i < 4; i++) {
     allEnemies.push(new Enemy());
 }
 // Place the player object in a variable called player
