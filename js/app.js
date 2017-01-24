@@ -68,13 +68,13 @@ Player.prototype.render = function() {
     *Handle input needs to list your keyboard strokes
     */
 
-Player.prototype.handleInput = function(key) {85
+Player.prototype.handleInput = function(key) {
     switch (key) {
         case 'left':
             this.x -= 100;
             break;
         case 'up':
-            this.y -= 85;
+            this.y -= 50;
         case 'right':
             this.x -= 100;
             break 
