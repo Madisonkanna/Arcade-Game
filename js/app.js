@@ -1,33 +1,35 @@
+// This is a superclass, Character
+// Our enemy and player delegate to this class when their lookups fail
 
-// Enemies our player must avoid
-var Enemy = function(x, y) {
-// Variables applied to each of our instances go here
-// The image/sprite for our enemies, this uses
-// a helper we've provided to easily load images
+var Character = function(img, x, y) {
     this.x = x;
     this.y = y;
-    this.speed = 100;
+    this.sprite = img;
+}
+
+// This is our enemies class
+var Enemy = function() {
+    Character.call(this, 'images/enemy-bug.png', -120, 60);
     this.sprite = 'images/enemy-bug.png';
+    this.speed = 100;
 };
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 
+Enemy.prototype = Object.create(Character.prototype);
+Enemy.prototype.constructor = Enemy;
+
 Enemy.prototype.update = function(dt) {
-    this.x = this.y + (dt * this.speed);
+    this.x += this.speed * dt;
     //this will update the position of our enemy, based on
     //where our enemy went!
-
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
 };
 
-// Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    //this will put the enemy onscreen in its new place
 };
+// Draw the enemy on the screen, required method for game
 
 // Now write your own player class
 // This class requires an update(), render() and
@@ -71,19 +73,18 @@ Player.prototype.render = function() {
 Player.prototype.handleInput = function(key) {
     switch (key) {
         case 'left':
-            this.x -= 100;
+            this.x -= 70; 
             break;
         case 'up':
-            this.y -= 50;
+            this.y -= 70; 
         case 'right':
-            this.x -= 100;
+            this.x -= 70;
             break 
         case 'down':
-            this.y += 85;
+            this.y += 100;
             break;
         default:
-            console.log('Please press arrow keys to move!');
-
+            console.log('Please press arrow keys to move');
     }
 };
 
