@@ -1,4 +1,8 @@
 
+var Speed = function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1));
+};
+
 // Enemies our player must avoid
 var Enemy = function(x, y) {
 // Variables applied to each of our instances go here
@@ -80,7 +84,6 @@ function allEnemies(enemy) {
     for (var i; i < 4; i++) {
         allEnemies.push(new Enemy());
     }
-
 };
 
 // Place the player object in a variable called player
