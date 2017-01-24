@@ -1,12 +1,12 @@
 
 // Enemies our player must avoid
-var Enemy = function(x, y, sprite) {
+var Enemy = function(x, y) {
 // Variables applied to each of our instances go here
 // The image/sprite for our enemies, this uses
 // a helper we've provided to easily load images
     this.x = x;
     this.y = y;
-    this.speed = Speed(65, 250);
+    this.speed = 100;
     this.sprite = 'images/enemy-bug.png';
 };
 
@@ -15,11 +15,11 @@ var Enemy = function(x, y, sprite) {
 Enemy.prototype.update = function(dt) {
     this.x = this.y + this.speed * dt;
         }
-
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
 };
+
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
@@ -31,7 +31,7 @@ Enemy.prototype.render = function() {
 // a handleInput() method.
 
 //Here is our player class
-var Player = function(x, y, sprite) {
+var Player = function(x, y) {
 //here we need an x, y position of where my player is at
     this.x = x;
     this.y = y;
@@ -45,6 +45,7 @@ var Player = function(x, y, sprite) {
 *called checkCollisions which resets the game when a player and a bug collide
 */
 Player.prototype.update = function() {
+
     //If the upkey is pressed, we need to decrease x. The update function updates this property
     
 
@@ -63,7 +64,6 @@ Player.prototype.render = function() {
     *Handle input needs to list your keyboard strokes
     */
 
-
 Player.prototype.handleInput = function() {
 
 };
@@ -73,9 +73,14 @@ Player.prototype.handleInput = function() {
 
 function allEnemies(enemy) {
     var allEnemies = [];
-    var enemy = new Enemy(50, 50);
+    var e1 = new Enemy(50, 50);
+    var e2 = new Enemy(50, 50);
+    for (var i; i < 4; i++) {
+        allEnemies.push(new Enemy());
+    }
 
 };
+
 
 // Place the player object in a variable called player
 
@@ -101,3 +106,5 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
+

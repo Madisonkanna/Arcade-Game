@@ -82,10 +82,10 @@ var Engine = (function(global) {
      * functionality this way (you could just implement collision detection
      * on the entities themselves within your app.js file).
      */
-    //function update(dt) {
-     //   updateEntities(dt);
-     //    checkCollisions();
-    //}
+    function update(dt) {
+        updateEntities(dt);
+         checkCollisions();
+    }
 
     /* This is called by the update function and loops through all of the
      * objects within your allEnemies array as defined in app.js and calls
@@ -185,3 +185,4 @@ var Engine = (function(global) {
      */
     global.ctx = ctx;
 })(this);
+
