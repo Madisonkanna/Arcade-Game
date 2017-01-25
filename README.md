@@ -9,3 +9,10 @@ Use the arrow keys to move left, right, forward or backward.
 
 To play the game, either download these files and open index.html on your computer, or simply cick this link: 
 https://madisonkanna.github.io/Arcade-Game/
+
+## Tools used in this game:
+Object-Oriented JavaScript
+Scopes, closures and prototype chains
+The 'this' keyword
+Superclasses and subclasses
+HTML5 Canvas 
