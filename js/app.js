@@ -1,6 +1,6 @@
 //Create array of enemy positions at y coordinate
 
-var positions = [100, 200, 300];
+var positions = [80, 100, 200];
 
 // This is a superclass Character
 // Our enemy and player delegate to this class when their lookups fail
@@ -34,30 +34,20 @@ Enemy.prototype.update = function(dt) {
         allEnemies.splice(enemiesIndex, 1);
     }    
 };
-
+//Put our enemy onscreen!
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+// Write your player class
 
-// Draw the enemy on the screen, required method for game
-
-//HERE!
-
-// Now write your own player class
-// This class requires an update(), render() and
-// a handleInput() method.
-
-//Here is our player class
+//Here is our player class that delegates to Character
 var Player = function() {
 //here we need an x, y position of where my player is at
     Character.call(this, 'images/char-boy.png', 200, 400);
 };
 
-Player.prototype.update = function(dt) {
 
-    //Our player wins if he reaches the other side. How do I do this?
-};
 
 //Draw the player on the screen
 Player.prototype.render = function() {
@@ -94,6 +84,7 @@ Player.prototype.update = function() {
    this.ctlKey = null;
 //Stop player from going off the top of the screen
     if (this.y < 50) {
+        alert("You win!");
         this.reset();
     }
 };
@@ -106,7 +97,7 @@ Player.prototype.reset = function() {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 var allEnemies = [];
-for (var i = 0; i < 4; i++) {
+for (var i = 0; i < 3; i++) {
     allEnemies.push(new Enemy());
 }
 
