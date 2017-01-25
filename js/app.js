@@ -1,8 +1,3 @@
-// This is my helper function
-
-var Speed = function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1));
-};
 
 // This is a superclass, Character
 // Our enemy and player delegate to this class when their lookups fail
@@ -17,7 +12,7 @@ var Character = function(img, x, y) {
 var Enemy = function() {
     Character.call(this, 'images/enemy-bug.png', -100, 200);
     this.sprite = 'images/enemy-bug.png';
-    this.speed = 100;
+    this.speed = 200;
 };
 
 // Update the enemy's position, required method for game
@@ -33,12 +28,10 @@ Enemy.prototype.update = function(dt) {
     //Instantiate a new enemy when another enmy goes offscreen
     if (this.x >= 510) {
         allEnemies.push(new Enemy());
-
         //remove enemies from array when they're gone
         var enemiesIndex = allEnemies.indexOf(this);
         allEnemies.splice(enemiesIndex, 1);
-    }
-    
+    }    
 };
 
 Enemy.prototype.render = function() {
