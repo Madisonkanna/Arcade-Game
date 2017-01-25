@@ -44,7 +44,7 @@ Enemy.prototype.render = function() {
 //Here is our player class that delegates to Character
 var Player = function() {
 //here we need an x, y position of where my player is at
-    Character.call(this, 'images/char-boy.png', 200, 400);
+    Character.call(this, 'images/char-pink-girl.png', 200, 400);
 };
 
 //Draw the player on the screen
