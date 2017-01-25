@@ -1,5 +1,4 @@
-
-// This is a superclass, Character
+// This is a superclass Character
 // Our enemy and player delegate to this class when their lookups fail
 
 var Character = function(img, x, y) {
@@ -10,8 +9,8 @@ var Character = function(img, x, y) {
 
 // This is our enemies class
 var Enemy = function() {
+    //Need to create a 'y' var that randomly puts bugs in different places
     Character.call(this, 'images/enemy-bug.png', -100, 200);
-    this.sprite = 'images/enemy-bug.png';
     this.speed = 200;
 };
 
