@@ -1,3 +1,9 @@
+// This is my helper function
+
+var Speed = function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1));
+};
+
 // This is a superclass, Character
 // Our enemy and player delegate to this class when their lookups fail
 
@@ -9,12 +15,11 @@ var Character = function(img, x, y) {
 
 // This is our enemies class
 var Enemy = function() {
-    Character.call(this, 'images/enemy-bug.png', -100, 100);
+    Character.call(this, 'images/enemy-bug.png', -100, 200);
     this.sprite = 'images/enemy-bug.png';
     this.speed = 100;
 };
 
- 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 
@@ -36,6 +41,7 @@ Enemy.prototype.update = function(dt) {
     
 };
 
+
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
@@ -50,8 +56,7 @@ Enemy.prototype.render = function() {
 //Here is our player class
 var Player = function() {
 //here we need an x, y position of where my player is at
-    Character.call(this, 'images/char-boy.png', 200, 400);
-    this.sprite = 'images/char-boy.png';
+    Character.call(this, 'images/char-boy.png', 100, 100);
 };
 
 Player.prototype = Object.create(Character.prototype);
@@ -59,7 +64,7 @@ Player.prototype.constructor = Player;
 
 Player.prototype.update = function(dt) {
     this.x += this.speed * dt;
-
+    //Our player wins if he reaches the other side. How do I do this?
 };
 
 /*Draw the player on the screen
@@ -132,9 +137,7 @@ var player = new Player();
 
 //Instantiate my objects, create one instance of my Player. 
 //Create an array with allEnemies, they should show up over and over again!
-var Speed = function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1));
-};
+
 
 
 // This listens for key presses and sends the keys to your
