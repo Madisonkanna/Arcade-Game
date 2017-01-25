@@ -7,23 +7,18 @@ var Character = function(img, x, y) {
     this.sprite = img;
 };
 
-// This is our enemies class
+// This is our enemies subclass
+// This class delegates to our superclass
 var Enemy = function() {
-    //Need to create a 'y' var that randomly puts bugs in different places
+// Set our enemies starting position
     Character.call(this, 'images/enemy-bug.png', -100, 200);
     this.speed = 200;
 };
 
-// Update the enemy's position, required method for game
-// Parameter: dt, a time delta between ticks
-
-Enemy.prototype = Object.create(Character.prototype);
-Enemy.prototype.constructor = Enemy;
-
 Enemy.prototype.update = function(dt) {
+//this will update the position of our enemy, based on
+//where our enemy went!
     this.x += this.speed * dt;
-    //this will update the position of our enemy, based on
-    //where our enemy went!
     //Instantiate a new enemy when another enmy goes offscreen
     if (this.x >= 510) {
         allEnemies.push(new Enemy());
