@@ -53,15 +53,15 @@ Player.prototype.render = function() {
 // Reset your player when he dies!
 function playerDies() {
     player.reset();
-    alert("You died!")
+    alert("You died!");
 
-};
+}
 
 /*Add in an additional function to the player class
  *called checkCollisions which resets the game when a player and a bug collide
  */
 var checkCollisions = function(allEnemies, player) {
-    for (i in allEnemies) {
+    for (var i in allEnemies) {
         if (((allEnemies[i].x - player.x) < 60) &&
             ((player.x - allEnemies[i].x) < 60) &&
             ((player.y - allEnemies[i].y) < 60) &&
@@ -72,7 +72,7 @@ var checkCollisions = function(allEnemies, player) {
 };
 
 Player.prototype.update = function(key) {
-    if (this.ctlKey === 'left' && this.x != 0) {
+    if (this.ctlKey === 'left' && this.x != 400) {
         this.x = this.x - 100;
     } else if (this.ctlKey === 'right' && this.x != 400) {
         this.x = this.x + 100;
@@ -93,7 +93,7 @@ Player.prototype.update = function(key) {
 Player.prototype.reset = function() {
     this.x = 200;
     this.y = 400;
-}
+};
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
@@ -112,7 +112,7 @@ var player = new Player();
 
 Player.prototype.handleInput = function(key) {
     this.ctlKey = key;
-}
+};
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
