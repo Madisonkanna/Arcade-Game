@@ -7,14 +7,17 @@ var Character = function(img, x, y) {
     this.sprite = img;
 };
 
+random = function(list) {
+    return list[Math.floor((Math.random()*list.length))];
+    list([100, 200, 300]);
+}
+
 // This is our enemies subclass
 // This class delegates to our superclass
 var Enemy = function() {
 // Set our enemies starting position
 // Create a random 'y' variable here
-    poisitions = [100, 200, 300];
-    y = positions[];
-    Character.call(this, 'images/enemy-bug.png', -100, y);
+    Character.call(this, 'images/enemy-bug.png', -100, random);
     this.speed = 200;
 };
 
