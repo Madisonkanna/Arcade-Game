@@ -1,3 +1,7 @@
+//Create array of enemy positions at y coordinate
+
+var positions = [100, 200, 300];
+
 // This is a superclass Character
 // Our enemy and player delegate to this class when their lookups fail
 
@@ -7,17 +11,13 @@ var Character = function(img, x, y) {
     this.sprite = img;
 };
 
-random = function(list) {
-    return list[Math.floor((Math.random()*list.length))];
-    list([100, 200, 300]);
-}
-
 // This is our enemies subclass
 // This class delegates to our superclass
 var Enemy = function() {
+
 // Set our enemies starting position
 // Create a random 'y' variable here
-    Character.call(this, 'images/enemy-bug.png', -100, random);
+    Character.call(this, 'images/enemy-bug.png', -100, 200);
     this.speed = 200;
 };
 
