@@ -17,6 +17,11 @@ The 'this' keyword
 Superclasses and subclasses
 HTML5 Canvas 
 
+## Resources
+https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
+http://eloquentjavascript.net/
+http://stackoverflow.com/questions/5915096/get-random-item-from-javascript-array
+
 ## Front-end Nanodegree guide to this project
 
 Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
