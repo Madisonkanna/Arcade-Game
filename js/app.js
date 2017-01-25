@@ -14,11 +14,12 @@ var Character = function(img, x, y) {
 // This is our enemies subclass
 // This class delegates to our superclass
 var Enemy = function() {
-
 // Set our enemies starting position
-// Create a random 'y' variable here
     Character.call(this, 'images/enemy-bug.png', -100, 200);
-    this.speed = 200;
+// Have enemies apeaar randomly at different y coorindates
+    this.y = positions[Math.floor(Math.random() * 3)];
+// Have enemies randomy have different speeds
+    this.speed = Math.floor(Math.random() * 400) + 100;
 };
 
 Enemy.prototype.update = function(dt) {
@@ -37,6 +38,8 @@ Enemy.prototype.update = function(dt) {
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
+
+
 // Draw the enemy on the screen, required method for game
 
 //HERE!
