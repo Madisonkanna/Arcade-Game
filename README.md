@@ -7,5 +7,5 @@ Frogger Arcade game is a slight cariation of the classic Frogger Arcade Game dev
 ## How to use the controls
 Use the arrow keys to move left, right, forward or backward.
 
-To see the demo of the game:
+To play the game, either download these files and open index.html on your computer, or simply cick this link: 
 https://madisonkanna.github.io/Arcade-Game/
