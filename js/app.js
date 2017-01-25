@@ -51,9 +51,6 @@ var Player = function() {
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
-/*Add in an additional function to the player class
-*called checkCollisions which resets the game when a player and a bug collide
-*/
 
 // Reset your player when he dies!
 function playerDies() {
