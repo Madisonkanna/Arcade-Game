@@ -41,7 +41,6 @@ Enemy.prototype.update = function(dt) {
     
 };
 
-
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
@@ -56,34 +55,31 @@ Enemy.prototype.render = function() {
 //Here is our player class
 var Player = function() {
 //here we need an x, y position of where my player is at
-    Character.call(this, 'images/char-boy.png', 100, 100);
+    Character.call(this, 'images/char-boy.png', 200, 400);
 };
 
 Player.prototype = Object.create(Character.prototype);
 Player.prototype.constructor = Player;
 
 Player.prototype.update = function(dt) {
-    this.x += this.speed * dt;
+
     //Our player wins if he reaches the other side. How do I do this?
 };
 
-/*Draw the player on the screen
-*Add in an additional function to the player class
+//Draw the player on the screen
+Player.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+/*Add in an additional function to the player class
 *called checkCollisions which resets the game when a player and a bug collide
 */
-Player.prototype.update = function(dt) {
-    this.x = this.y + (dt * this.speed);
 
-}
 
     //If the upkey is pressed, we need to decrease x. The update function updates this property
 /*render function says, redraw everything and by the process of the 
 *x property being different, your player will show up in a different place
 */
 
-Player.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
     /*Anytime you press a key, you need to call a handle input method
     *that is going to increment our x and y values for your player!
 
@@ -92,36 +88,18 @@ Player.prototype.render = function() {
     *Handle input needs to list your keyboard strokes
     */
 
-Player.prototype.handleInput = function(key) {
-    switch (key) {
-        case 'left':
-            this.x -= 90;
-            if (this.x > 0) {
-                this.x -= 90;
-            } 
-            break;
-        case 'up':
-            this.y -= 80; 
-            if (this.y > -25) {
-                this.y -= 80;
-            }
-        case 'right':
-            this.x -= 100;
-            if (this.x < 400) {
-                this.x += 100;
-            }
-            break 
-        case 'down':
-            this.y += 85;
-            if (this.y < 390) {
-                this.y += 85;
-            }
-            break;
-        default:
-            console.log('Please press arrow keys to move');
-    }
+Player.prototype.update = function() {
+   if (this.ctlKey === 'left' && this.x != 0) {
+     this.x = this.x - 100;
+   } else if (this.ctlKey === 'right' && this.x != 400) {
+     this.x = this.x + 100;
+   } else if (this.ctlKey === 'up') {
+     this.y = this.y - 80;
+   } else if (this.ctlKey === 'down' && this.y != 400) {
+     this.y = this.y + 80;
+   }
+   this.ctlKey = null;
 };
-
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
@@ -138,8 +116,9 @@ var player = new Player();
 //Instantiate my objects, create one instance of my Player. 
 //Create an array with allEnemies, they should show up over and over again!
 
-
-
+Player.prototype.handleInput = function(key) {
+   this.ctlKey = key;
+ }
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
