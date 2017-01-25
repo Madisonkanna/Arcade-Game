@@ -22,6 +22,8 @@ var Enemy = function() {
     this.speed = Math.floor(Math.random() * 400) + 100;
 };
 
+;
+
 Enemy.prototype.update = function(dt) {
 //this will update the position of our enemy, based on
 //where our enemy went!
@@ -39,15 +41,11 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-// Write your player class
-
 //Here is our player class that delegates to Character
 var Player = function() {
 //here we need an x, y position of where my player is at
     Character.call(this, 'images/char-boy.png', 200, 400);
 };
-
-
 
 //Draw the player on the screen
 Player.prototype.render = function() {
@@ -57,21 +55,28 @@ Player.prototype.render = function() {
 *called checkCollisions which resets the game when a player and a bug collide
 */
 
+// Reset your player when he dies!
+function playerDies() {
+    player.reset();
+    alert("You died!")
 
-    //If the upkey is pressed, we need to decrease x. The update function updates this property
-/*render function says, redraw everything and by the process of the 
-*x property being different, your player will show up in a different place
+};
+
+/*Add in an additional function to the player class
+*called checkCollisions which resets the game when a player and a bug collide
 */
+var checkCollisions = function(allEnemies, player) {
+    for (i in allEnemies) {
+        if (((allEnemies[i].x - player.x) < 60) 
+            && ((player.x - allEnemies[i].x) < 60)
+            && ((player.y - allEnemies[i].y) < 60)
+            && ((allEnemies[i].y - player.y) < 60)) {
+            playerDies();
+}
+    }
+};
 
-    /*Anytime you press a key, you need to call a handle input method
-    *that is going to increment our x and y values for your player!
-
-    *Left is going to move the player along the x axis
-    *Up and down move the player along the Y axis. Handle input needs to list keyboard strokes
-    *Handle input needs to list your keyboard strokes
-    */
-
-Player.prototype.update = function() {
+Player.prototype.update = function(key) {
    if (this.ctlKey === 'left' && this.x != 0) {
      this.x = this.x - 100;
    } else if (this.ctlKey === 'right' && this.x != 400) {
@@ -87,6 +92,7 @@ Player.prototype.update = function() {
         alert("You win!");
         this.reset();
     }
+
 };
 
 Player.prototype.reset = function() {
