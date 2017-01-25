@@ -99,7 +99,16 @@ Player.prototype.update = function() {
      this.y = this.y + 80;
    }
    this.ctlKey = null;
+//Stop player from going off the top of the screen
+    if (this.y < 50) {
+        this.reset();
+    }
 };
+
+Player.prototype.reset = function() {
+    this.x = 200;
+    this.y = 400;
+}
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
