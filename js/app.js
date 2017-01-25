@@ -11,7 +11,10 @@ var Character = function(img, x, y) {
 // This class delegates to our superclass
 var Enemy = function() {
 // Set our enemies starting position
-    Character.call(this, 'images/enemy-bug.png', -100, 200);
+// Create a random 'y' variable here
+    poisitions = [100, 200, 300];
+    y = positions[];
+    Character.call(this, 'images/enemy-bug.png', -100, y);
     this.speed = 200;
 };
 
@@ -44,9 +47,6 @@ var Player = function() {
 //here we need an x, y position of where my player is at
     Character.call(this, 'images/char-boy.png', 200, 400);
 };
-
-Player.prototype = Object.create(Character.prototype);
-Player.prototype.constructor = Player;
 
 Player.prototype.update = function(dt) {
 
