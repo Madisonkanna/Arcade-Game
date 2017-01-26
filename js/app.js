@@ -66,27 +66,31 @@ function playerDies() {
 /*Add in an additional function to the player class
  *called checkCollisions which resets the game when a player and a bug collide
  */
-var checkCollisions = function() {
-    for (var i in allEnemies) {
-        if (((allEnemies[i].x - player.x) < 80) &&
-            ((player.x - allEnemies[i].x) < 80) &&
-            ((player.y - allEnemies[i].y) < 80) &&
-            ((allEnemies[i].y - player.y) < 80)) {
-            playerDies();
-            alert("You died!")
+
+
+Player.prototype.checkCollisions = function() {
+    for (var i = 0; i < allEnemies.length; i++) {
+      if (!(allEnemies[i].y + 70 < this.y ||
+        allEnemies[i].y > this.y + 70 ||
+        allEnemies[i].x + 70 < this.x ||
+        allEnemies[i].x > this.x + 70)) {
+        playerDies();
+        alert("You died! Start again");
         }
     }
 };
+
+
 //Make my player move!
 Player.prototype.handleInput = function(e) {
     if (e === 'left' && this.x != 0) {
         this.x -= 100;
     } else if (e === 'right' && this.x != 400) {
-        this.x -= 100;
+        this.x += 100;
     } else if (e === 'up') {
-        this.x -= 100;
+        this.y = this.y - 80;
     } else if (e === 'down' && this.y != 400) {
-        this.x -= 100;
+        this.y = this.y + 80;
     }
     e = null;
 };
