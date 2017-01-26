@@ -59,8 +59,6 @@ function playerDies() {
 /*Add in an additional function to the player class
  *called checkCollisions which resets the game when a player and a bug collide
  */
-
-
 var checkCollisions = function() {
     for (var i in allEnemies) {
         if (((allEnemies[i].x - player.x) < 80) &&
@@ -84,10 +82,9 @@ Player.prototype.handleInput = function(e) {
         this.y = this.y + 80;
     }
     e = null;
-    //Stop player from going off the top of the screen!
-
 };
 
+// When player wins, give an alert and reset player
 Player.prototype.update = function() {
     if (this.y < 50) {
         alert("You win!");
