@@ -16,7 +16,7 @@ var Enemy = function() {
     // Set our enemies starting position
     Character.call(this, 'images/enemy-bug.png', -100, 200);
     // Have enemies apeaar randomly at different y coorindates
-    this.y = positions[Math.floor(Math.random() * 3)];
+    this.y = positions[Math.floor(Math.random() * 4)];
     // Have enemies randomy have different speeds
     this.speed = Math.floor(Math.random() * 200) + 100;
 };
@@ -85,11 +85,11 @@ Player.prototype.checkCollisions = function() {
 Player.prototype.handleInput = function(e) {
     if (e === 'left' && this.x != 0) {
         this.x -= 100;
-    } else if (e === 'right' && this.x != 400) {
+    } else if (e === 'right' && this.x != 800) {
         this.x += 100;
     } else if (e === 'up') {
         this.y = this.y - 80;
-    } else if (e === 'down' && this.y != 400) {
+    } else if (e === 'down' && this.y != 600) {
         this.y = this.y + 80;
     }
     e = null;
