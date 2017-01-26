@@ -18,7 +18,7 @@ var Enemy = function() {
     // Have enemies apeaar randomly at different y coorindates
     this.y = positions[Math.floor(Math.random() * 3)];
     // Have enemies randomy have different speeds
-    this.speed = Math.floor(Math.random() * 400) + 100;
+    this.speed = Math.floor(Math.random() * 300) + 100;
 };
 
 
@@ -27,7 +27,7 @@ Enemy.prototype.update = function(dt) {
     //where our enemy went!
     this.x += this.speed * dt;
     //Instantiate a new enemy when another enmy goes offscreen
-    if (this.x >= 510) {
+    if (this.x >= 500) {
         allEnemies.push(new Enemy());
         //remove enemies from array when they're gone
         var enemiesIndex = allEnemies.indexOf(this);
@@ -53,20 +53,20 @@ Player.prototype.render = function() {
 // Reset your player when he dies!
 function playerDies() {
     player.reset();
-    alert("You died!");
 
 }
 
 /*Add in an additional function to the player class
  *called checkCollisions which resets the game when a player and a bug collide
  */
-var checkCollisions = function(allEnemies, player) {
+var checkCollisions = function() {
     for (var i in allEnemies) {
         if (((allEnemies[i].x - player.x) < 60) &&
             ((player.x - allEnemies[i].x) < 60) &&
             ((player.y - allEnemies[i].y) < 60) &&
             ((allEnemies[i].y - player.y) < 60)) {
             playerDies();
+            alert("You died!")
         }
     }
 };
