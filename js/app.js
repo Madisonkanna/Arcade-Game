@@ -72,8 +72,8 @@ var checkCollisions = function() {
         }
     }
 };
-
-Player.prototype.update = function(key) {
+//Make my player move
+Player.prototype.update = function() {
     if (this.ctlKey === 'left' && this.x != 0) {
         this.x = this.x - 100;
     } else if (this.ctlKey === 'right' && this.x != 400) {
@@ -109,9 +109,7 @@ for (var i = 0; i < 3; i++) {
 //Create 1 instance of the player:
 var player = new Player();
 
-//Instantiate my objects, create one instance of my Player. 
-//Create an array with allEnemies, they should show up over and over again!
-
+// 
 Player.prototype.handleInput = function(key) {
     this.ctlKey = key;
 };
