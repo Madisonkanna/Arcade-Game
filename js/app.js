@@ -21,12 +21,11 @@ var Enemy = function() {
     this.speed = Math.floor(Math.random() * 200) + 100;
 };
 
-
-Enemy.prototype.update = function(dt) {
     //this will update the position of our enemy, based on
     //where our enemy went!
+Enemy.prototype.update = function(dt) {
     this.x += this.speed * dt;
-    //Instantiate a new enemy when another enmy goes offscreen
+    //Instantiate a new enemy when another enmy goes offscreen!
     if (this.x >= 500) {
         allEnemies.push(new Enemy());
         //remove enemies from array when they're gone
@@ -70,7 +69,7 @@ var checkCollisions = function() {
         }
     }
 };
-//Make my player
+//Make my player move!
 Player.prototype.handleInput = function(e) {
     if (e === 'left' && this.x != 0) {
         this.x = this.x - 100;
