@@ -18,7 +18,7 @@ var Enemy = function() {
     // Have enemies apeaar randomly at different y coorindates
     this.y = positions[Math.floor(Math.random() * 3)];
     // Have enemies randomy have different speeds
-    this.speed = Math.floor(Math.random() * 300) + 100;
+    this.speed = Math.floor(Math.random() * 200) + 100;
 };
 
 
@@ -30,8 +30,8 @@ Enemy.prototype.update = function(dt) {
     if (this.x >= 500) {
         allEnemies.push(new Enemy());
         //remove enemies from array when they're gone
-        var enemiesIndex = allEnemies.indexOf(this);
-        allEnemies.splice(enemiesIndex, 1);
+        var enemiesList = allEnemies.indexOf(this);
+        allEnemies.splice(enemiesList, 1);
     }
 };
 //Put our enemy onscreen!
@@ -59,12 +59,14 @@ function playerDies() {
 /*Add in an additional function to the player class
  *called checkCollisions which resets the game when a player and a bug collide
  */
+
+
 var checkCollisions = function() {
     for (var i in allEnemies) {
-        if (((allEnemies[i].x - player.x) < 60) &&
-            ((player.x - allEnemies[i].x) < 60) &&
-            ((player.y - allEnemies[i].y) < 60) &&
-            ((allEnemies[i].y - player.y) < 60)) {
+        if (((allEnemies[i].x - player.x) < 80) &&
+            ((player.x - allEnemies[i].x) < 80) &&
+            ((player.y - allEnemies[i].y) < 80) &&
+            ((allEnemies[i].y - player.y) < 80)) {
             playerDies();
             alert("You died!")
         }
@@ -72,7 +74,7 @@ var checkCollisions = function() {
 };
 
 Player.prototype.update = function(key) {
-    if (this.ctlKey === 'left' && this.x != 400) {
+    if (this.ctlKey === 'left' && this.x != 0) {
         this.x = this.x - 100;
     } else if (this.ctlKey === 'right' && this.x != 400) {
         this.x = this.x + 100;
@@ -82,7 +84,7 @@ Player.prototype.update = function(key) {
         this.y = this.y + 80;
     }
     this.ctlKey = null;
-    //Stop player from going off the top of the screen
+    //Stop player from going off the top of the screen!
     if (this.y < 50) {
         alert("You win!");
         this.reset();
