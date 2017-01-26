@@ -31,7 +31,7 @@ Enemy.prototype.constructor = Enemy;
 Enemy.prototype.update = function(dt) {
     this.x += this.speed * dt;
     //Instantiate a new enemy when another enmy goes offscreen!
-    if (this.x >= 500) {
+    if (this.x >= 800) {
         allEnemies.push(new Enemy());
         //remove enemies from array when they're gone
         var enemiesList = allEnemies.indexOf(this);
