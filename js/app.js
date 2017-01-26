@@ -21,6 +21,11 @@ var Enemy = function() {
     this.speed = Math.floor(Math.random() * 200) + 100;
 };
 
+//For safe inheritance, I'll call Object.create and the constructor function
+
+Enemy.prototype = Object.create(Character.prototype);
+Enemy.prototype.constructor = Enemy;
+
     //this will update the position of our enemy, based on
     //where our enemy went!
 Enemy.prototype.update = function(dt) {
@@ -44,6 +49,9 @@ var Player = function() {
     Character.call(this, 'images/char-pink-girl.png', 200, 400);
 };
 
+//For safe inheritance, I'm calling Object.create and the constructor function
+Player.prototype = Object.create(Character.prototype);
+Player.prototype.constructor = Player;
 //Draw the player on the screen
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -72,13 +80,13 @@ var checkCollisions = function() {
 //Make my player move!
 Player.prototype.handleInput = function(e) {
     if (e === 'left' && this.x != 0) {
-        this.x = this.x - 100;
+        this.x -= 100;
     } else if (e === 'right' && this.x != 400) {
-        this.x = this.x + 100;
+        this.x -= 100;
     } else if (e === 'up') {
-        this.y = this.y - 80;
+        this.x -= 100;
     } else if (e === 'down' && this.y != 400) {
-        this.y = this.y + 80;
+        this.x -= 100;
     }
     e = null;
 };
