@@ -72,25 +72,28 @@ var checkCollisions = function() {
         }
     }
 };
-//Make my player move
-Player.prototype.update = function() {
-    if (this.ctlKey === 'left' && this.x != 0) {
+//Make my player
+Player.prototype.handleInput = function(e) {
+    if (e === 'left' && this.x != 0) {
         this.x = this.x - 100;
-    } else if (this.ctlKey === 'right' && this.x != 400) {
+    } else if (e === 'right' && this.x != 400) {
         this.x = this.x + 100;
-    } else if (this.ctlKey === 'up') {
+    } else if (e === 'up') {
         this.y = this.y - 80;
-    } else if (this.ctlKey === 'down' && this.y != 400) {
+    } else if (e === 'down' && this.y != 400) {
         this.y = this.y + 80;
     }
-    this.ctlKey = null;
+    e = null;
     //Stop player from going off the top of the screen!
+
+};
+
+Player.prototype.update = function() {
     if (this.y < 50) {
         alert("You win!");
         this.reset();
     }
-
-};
+}
 
 Player.prototype.reset = function() {
     this.x = 200;
@@ -110,9 +113,6 @@ for (var i = 0; i < 3; i++) {
 var player = new Player();
 
 // 
-Player.prototype.handleInput = function(key) {
-    this.ctlKey = key;
-};
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
