@@ -1,5 +1,5 @@
 //Create array of enemy positions at y coordinate
-var positions = [80, 100, 200];
+var positions = [80, 100, 200, 300, 500];
 
 // This is a superclass Character
 // Our enemy and player delegate to this class when their lookups fail
@@ -46,7 +46,7 @@ Enemy.prototype.render = function() {
 //Here is our player class that delegates to Character
 var Player = function() {
     //here we need an x, y position of where my player is at
-    Character.call(this, 'images/char-pink-girl.png', 200, 400);
+    Character.call(this, 'images/char-pink-girl.png', 400, 600);
 };
 
 //For safe inheritance, I'm calling Object.create and the constructor function
@@ -104,14 +104,14 @@ Player.prototype.update = function() {
 }
 
 Player.prototype.reset = function() {
-    this.x = 200;
-    this.y = 400;
+    this.x = 400;
+    this.y = 600;
 };
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 var allEnemies = [];
-for (var i = 0; i < 3; i++) {
+for (var i = 0; i < 5; i++) {
     allEnemies.push(new Enemy());
 }
 
