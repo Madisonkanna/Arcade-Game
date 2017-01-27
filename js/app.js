@@ -14,7 +14,7 @@ var Character = function(img, x, y) {
 // This class delegates to our superclass
 var Enemy = function() {
     // Set our enemies starting position
-    Character.call(this, 'images/enemy-bug.png', -100, 200);
+    Character.call(this, 'images/char-boy.png', -100, 200);
     // Have enemies apeaar randomly at different y coorindates
     this.y = positions[Math.floor(Math.random() * 4)];
     // Have enemies randomy have different speeds
@@ -111,7 +111,7 @@ Player.prototype.reset = function() {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 var allEnemies = [];
-for (var i = 0; i < 5; i++) {
+for (var i = 0; i < 7; i++) {
     allEnemies.push(new Enemy());
 }
 
