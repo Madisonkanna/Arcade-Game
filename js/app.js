@@ -1,5 +1,6 @@
 //Create array of enemy positions at y coordinate
-var positions = [80, 100, 200, 300, 500];
+var positions = [80, 100, 200, 300, 500, 700];
+var positionsStar = [10, 50, 150, 300, 500, 800];
 
 // This is a superclass Character
 // Our enemy and player delegate to this class when their lookups fail
@@ -14,8 +15,8 @@ var Character = function(img, x, y) {
 
 //Create star subclass and call the Character superclass
 var Star = function() {
-    Character.call(this, 'images/star.png', -100, 400);
-    this.y = positions[Math.floor(Math.random() * 2)];
+    Character.call(this, 'images/star.png', -100, 600);
+    this.y = positionsStar[Math.floor(Math.random() * 3)];
     this.speed = Math.floor(Math.random() * 200) + 100;
 };
 //For safe inheritance I'll call the Obj.create and constructor function
