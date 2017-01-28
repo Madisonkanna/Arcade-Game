@@ -10,6 +10,32 @@ var Character = function(img, x, y) {
     this.sprite = img;
 };
 
+// Hearts subclass
+
+//Create star subclass and call the Character superclass
+var Star = function() {
+    Character.call(this, 'images/star.png', -100, 400);
+    this.y = positions[Math.floor(Math.random() * 2)];
+    this.speed = Math.floor(Math.random() * 200) + 100;
+};
+//For safe inheritance I'll call the Obj.create and constructor function
+Star.prototype = Object.create(Character.prototype);
+Star.prototype.constructor = Star;
+
+Star.prototype.update = function(dt) {
+    this.x += this.speed * dt;
+    if (this.x >= 800) {
+        allStars.push(new Star());
+        var starsList = allStars.indexOf(this);
+        allStars.splice(starsList, 1);
+    }
+};
+
+//Get star onscreen
+Star.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
 // This is our enemies subclass
 // This class delegates to our superclass
 var Enemy = function() {
@@ -113,6 +139,12 @@ Player.prototype.reset = function() {
 var allEnemies = [];
 for (var i = 0; i < 7; i++) {
     allEnemies.push(new Enemy());
+}
+
+// Create array to hold stars in
+var allStars = [];
+for (var i = 0; i < 3; i++) {
+    allStars.push(new Star());
 }
 
 // Place the player object in a variable called player
