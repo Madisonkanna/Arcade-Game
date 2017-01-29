@@ -90,6 +90,9 @@ function playerDies() {
 
 }
 
+function gotPoint() {
+    alert("You got a star!")
+}
 /*Add in an additional function to the player class
  *called checkCollisions which resets the game when a player and a bug collide
  */
@@ -107,6 +110,17 @@ Player.prototype.checkCollisions = function() {
     }
 };
 
+
+Player.prototype.checkCollections = function() {
+    for (var i = 0; i < allStars.length; i++) {
+        if (!(allStars[i].y + 70 < this.y || 
+            allStars[i].y > this.y + 70 ||
+            allStars[i].x + 70 < this.x ||
+            allStars[i].x > this.x + 70)) {
+            gotPoint();
+        }
+    }
+}
 
 //Make my player move!
 Player.prototype.handleInput = function(e) {
