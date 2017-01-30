@@ -1,3 +1,9 @@
 body {
     text-align: center;
 }
+
+
+#status {
+	background-color: blue;
+	height; 200px;
+}
