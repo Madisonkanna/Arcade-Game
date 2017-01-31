@@ -147,6 +147,7 @@ Player.prototype.update = function() {
 Player.prototype.reset = function() {
     this.x = 400;
     this.y = 600;
+    this.sprite = 'images/char-princess-girl.png';
 };
 
 // Now instantiate your objects.
