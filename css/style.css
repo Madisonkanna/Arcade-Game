@@ -3,7 +3,9 @@ body {
 }
 
 
-#status {
-	background-color: yellow;
+h2 {
+	color: orange;
 	font-size: 80px;
+	margin-bottom: 0;
+	margin-right: 40px;
 }
