@@ -16,7 +16,7 @@ var Character = function(img, x, y) {
 var Star = function() {
     Character.call(this, 'images/star.png', -100, 30);
     this.y = positionsStar[Math.floor(Math.random() * 9)];
-    this.speed = Math.floor(Math.random() * 200) + 100;
+    this.speed = Math.floor(Math.random() * 100) + 100;
 };
 //For safe inheritance I'll call the Obj.create and constructor function
 Star.prototype = Object.create(Character.prototype);
@@ -95,6 +95,7 @@ function gotPoint() {
 
 }
 
+
 //Display my player's score and level
 var displayScoreLevel = function(currentLevel) {
     var canvas = document.getElementsByTagName('canvas');
@@ -125,6 +126,7 @@ Player.prototype.checkCollections = function() {
             allStars[i].y > this.y + 70 ||
             allStars[i].x + 70 < this.x ||
             allStars[i].x > this.x + 70)) {
+            gotPoint();
 
         }
     }
@@ -156,10 +158,12 @@ Player.prototype.update = function() {
     }
 }
 
+
+
 Player.prototype.reset = function() {
     this.x = 400;
     this.y = 600;
-    //this.sprite = 'images/char-princess-girl.png';
+    this.sprite = 'images/char-pink-girl.png';
 };
 
 // Now instantiate your objects.
@@ -183,6 +187,8 @@ var increaseDifficulty = function(numEnemies) {
 
 var player = new Player(202.5, 383, 50);
 var gameLevel = 1;
+
+
 var scoreLevelDiv = document.createElement('div');
 // Create array to hold stars in
 var allStars = [];
