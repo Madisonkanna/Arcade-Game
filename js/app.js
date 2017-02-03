@@ -15,8 +15,8 @@ var Character = function(img, x, y) {
 
 //Create star subclass and call the Character superclass
 var Star = function() {
-    Character.call(this, 'images/star.png', -100, 600);
-    this.y = positionsStar[Math.floor(Math.random() * 3)];
+    Character.call(this, 'images/star.png', -100, 30);
+    this.y = positionsStar[Math.floor(Math.random() * 9)];
     this.speed = Math.floor(Math.random() * 200) + 100;
 };
 //For safe inheritance I'll call the Obj.create and constructor function
@@ -92,7 +92,8 @@ function playerDies() {
 }
 
 function gotPoint() {
-    console.log('current score: ' + score + ', current level: ' + gameLevel);
+    player.sprite = 'images/char-princess-girl.png';
+
 }
 /*Add in an additional function to the player class
  *called checkCollisions which resets the game when a player and a bug collide
@@ -151,7 +152,6 @@ Player.prototype.update = function() {
     if (this.y < 50) {
         //ctx.fillStyle = 'pink';
         //ctx.fillRect(0, 0, 905, 171);
-
         score += 1;
         gameLevel += 1;
         console.log('current score: ' + score + ', current level: ' + gameLevel);
@@ -163,13 +163,13 @@ Player.prototype.update = function() {
 Player.prototype.reset = function() {
     this.x = 400;
     this.y = 600;
-    this.sprite = 'images/char-princess-girl.png';
+    //this.sprite = 'images/char-princess-girl.png';
 };
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 var allEnemies = [];
-for (var i = 0; i < 7; i++) {
+for (var i = 0; i < 2; i++) {
     allEnemies.push(new Enemy());
 }
 
@@ -179,7 +179,7 @@ var increaseDifficulty = function(numEnemies) {
 
     // load new set of enemies
     for (var i = 0; i <= numEnemies; i++) {
-        var enemy = new Enemy(0, Math.random() * 184 + 50, Math.random() * 256);
+        var enemy = new Enemy(0, Math.random() * 184 + 50, Math.random() * 106);
         
         allEnemies.push(enemy);
     }
@@ -191,7 +191,7 @@ var gameLevel = 1;
 var scoreLevelDiv = document.createElement('div');
 // Create array to hold stars in
 var allStars = [];
-for (var i = 0; i < 3; i++) {
+for (var i = 0; i < 2; i++) {
     allStars.push(new Star());
 }
 
