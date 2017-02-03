@@ -92,18 +92,16 @@ function playerDies() {
 }
 
 function gotPoint() {
-    alert("You got a star!")
+    console.log('current score: ' + score + ', current level: ' + gameLevel);
 }
 /*Add in an additional function to the player class
  *called checkCollisions which resets the game when a player and a bug collide
  */
 
-//Display my player's score
+//Display my player's score and level
 var displayScoreLevel = function(currentScore, currentLevel) {
     var canvas = document.getElementsByTagName('canvas');
     var firstCanvasTag = canvas[0];
-
-    // add player score and level to div element created
     scoreLevelDiv.innerHTML = 'Score: ' + currentScore
         + ' / ' + 'Level: ' + currentLevel;
     document.body.insertBefore(scoreLevelDiv, firstCanvasTag[0]);
@@ -151,9 +149,8 @@ Player.prototype.handleInput = function(e) {
 // When player wins, give an alert and reset player
 Player.prototype.update = function() {
     if (this.y < 50) {
-        alert("You win!");
-        ctx.fillStyle = 'white';
-        ctx.fillRect(0, 0, 505, 171);
+        //ctx.fillStyle = 'pink';
+        //ctx.fillRect(0, 0, 905, 171);
 
         score += 1;
         gameLevel += 1;
