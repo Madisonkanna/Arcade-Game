@@ -11,7 +11,6 @@ var Character = function(img, x, y) {
     this.sprite = img;
 };
 
-// Hearts subclass
 
 //Create star subclass and call the Character superclass
 var Star = function() {
@@ -82,7 +81,7 @@ Player.prototype.constructor = Player;
 //Draw the player on the screen
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    displayScoreLevel(score, gameLevel);
+    displayScoreLevel(gameLevel);
 };
 
 // Reset your player when he dies!
@@ -95,20 +94,18 @@ function gotPoint() {
     player.sprite = 'images/char-princess-girl.png';
 
 }
-/*Add in an additional function to the player class
- *called checkCollisions which resets the game when a player and a bug collide
- */
 
 //Display my player's score and level
-var displayScoreLevel = function(currentScore, currentLevel) {
+var displayScoreLevel = function(currentLevel) {
     var canvas = document.getElementsByTagName('canvas');
     var firstCanvasTag = canvas[0];
-    scoreLevelDiv.innerHTML = 'Score: ' + currentScore
-        + ' / ' + 'Level: ' + currentLevel;
+    scoreLevelDiv.innerHTML = 'Level: ' + currentLevel;
     document.body.insertBefore(scoreLevelDiv, firstCanvasTag[0]);
 };
 
-
+/*Add in an additional function to the player class
+ *called checkCollisions which resets the game when a player and a bug collide
+ */
 Player.prototype.checkCollisions = function() {
     for (var i = 0; i < allEnemies.length; i++) {
       if (!(allEnemies[i].y + 70 < this.y ||
@@ -128,7 +125,7 @@ Player.prototype.checkCollections = function() {
             allStars[i].y > this.y + 70 ||
             allStars[i].x + 70 < this.x ||
             allStars[i].x > this.x + 70)) {
-            gotPoint();
+
         }
     }
 }
@@ -152,10 +149,9 @@ Player.prototype.update = function() {
     if (this.y < 50) {
         //ctx.fillStyle = 'pink';
         //ctx.fillRect(0, 0, 905, 171);
-        score += 1;
         gameLevel += 1;
-        console.log('current score: ' + score + ', current level: ' + gameLevel);
-        increaseDifficulty(score);
+        console.log('current level: ' + gameLevel);
+        increaseDifficulty(gameLevel);
         this.reset();
     }
 }
@@ -186,7 +182,6 @@ var increaseDifficulty = function(numEnemies) {
 };
 
 var player = new Player(202.5, 383, 50);
-var score = 0;
 var gameLevel = 1;
 var scoreLevelDiv = document.createElement('div');
 // Create array to hold stars in
