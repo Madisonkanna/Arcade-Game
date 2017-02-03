@@ -11,7 +11,6 @@ var Character = function(img, x, y) {
     this.sprite = img;
 };
 
-
 //Create star subclass and call the Character superclass
 var Star = function() {
     Character.call(this, 'images/star.png', -100, 30);
@@ -95,7 +94,6 @@ function gotPoint() {
 
 }
 
-
 //Display my player's score and level
 var displayScoreLevel = function(currentLevel) {
     var canvas = document.getElementsByTagName('canvas');
@@ -157,8 +155,6 @@ Player.prototype.update = function() {
         this.reset();
     }
 }
-
-
 
 Player.prototype.reset = function() {
     this.x = 400;
