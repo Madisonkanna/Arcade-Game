@@ -82,6 +82,7 @@ Player.prototype.constructor = Player;
 //Draw the player on the screen
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    displayScoreLevel(score, gameLevel);
 };
 
 // Reset your player when he dies!
@@ -97,6 +98,17 @@ function gotPoint() {
  *called checkCollisions which resets the game when a player and a bug collide
  */
 
+//Display my player's score
+var displayScoreLevel = function(currentScore, currentLevel) {
+    var canvas = document.getElementsByTagName('canvas');
+    var firstCanvasTag = canvas[0];
+
+    // add player score and level to div element created
+    scoreLevelDiv.innerHTML = 'Score: ' + currentScore
+        + ' / ' + 'Level: ' + currentLevel;
+    document.body.insertBefore(scoreLevelDiv, firstCanvasTag[0]);
+};
+
 
 Player.prototype.checkCollisions = function() {
     for (var i = 0; i < allEnemies.length; i++) {
@@ -105,7 +117,7 @@ Player.prototype.checkCollisions = function() {
         allEnemies[i].x + 70 < this.x ||
         allEnemies[i].x > this.x + 70)) {
         playerDies();
-        alert("You died! Start again");
+        console.log("Collided!")
         }
     }
 };
@@ -140,6 +152,13 @@ Player.prototype.handleInput = function(e) {
 Player.prototype.update = function() {
     if (this.y < 50) {
         alert("You win!");
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, 505, 171);
+
+        score += 1;
+        gameLevel += 1;
+        console.log('current score: ' + score + ', current level: ' + gameLevel);
+        increaseDifficulty(score);
         this.reset();
     }
 }
@@ -157,6 +176,22 @@ for (var i = 0; i < 7; i++) {
     allEnemies.push(new Enemy());
 }
 
+var increaseDifficulty = function(numEnemies) {
+    // remove all previous enemies on canvas
+    allEnemies.length = 0;
+
+    // load new set of enemies
+    for (var i = 0; i <= numEnemies; i++) {
+        var enemy = new Enemy(0, Math.random() * 184 + 50, Math.random() * 256);
+        
+        allEnemies.push(enemy);
+    }
+};
+
+var player = new Player(202.5, 383, 50);
+var score = 0;
+var gameLevel = 1;
+var scoreLevelDiv = document.createElement('div');
 // Create array to hold stars in
 var allStars = [];
 for (var i = 0; i < 3; i++) {
