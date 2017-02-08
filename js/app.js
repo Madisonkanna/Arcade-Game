@@ -39,7 +39,7 @@ Star.prototype.render = function() {
 // This class delegates to our superclass
 var Enemy = function() {
     // Set our enemies starting position
-    Character.call(this, 'images/char-boy.png', -100, 200);
+    Character.call(this, 'images/enemy-bug.png', -100, 200);
     // Have enemies apeaar randomly at different y coorindates
     this.y = positions[Math.floor(Math.random() * 4)];
     // Have enemies randomy have different speeds
